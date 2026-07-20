@@ -1,0 +1,17 @@
+[project]
+name = "summer-emotion"
+version = "0.1.0"
+description = "AI model for facial emotions recognition."
+readme = "README.md"
+authors = [
+    { name = "Rafał Mazur", email = "raf.mazur.000@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+summer-emotion = "summer_emotion:main"
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
