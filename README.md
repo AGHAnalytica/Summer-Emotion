@@ -1,16 +1,23 @@
 # Summer Emotion
 
-## Spotkania
+## Meetings
 
-- **wtorek (4.08.26)** - ustalenie typu sieci (Issues), termin spotkań cyklicznych
+- **Tuesday (4.08.26)** - determine network type (look: [issues](https://github.com/AGHAnalytica/Summer-Emotion/issues)) and schedule recurring meetings – took place on Wednesday (05.08.26)
+- **Tuesday (11.08.26)** - search for an open-source model (introductory study of CNN architecture) -> not found, FER2013 dataset could be useful
 
-## Parametry danych
+## Data parameters
 
-- **obrazek 256x256**
-- **kolor czarno-biały** - w trakcie trwania projektu zmiana na kolorowe
+- **48x48 image** – in accordance with the dataset
+- **black and white** – change to color during the project
 
-## Działania w repo
+## Network operation
 
-- **do przemyślenia** - Issues
-- **ustalone** - README
-- **przypisywanie tasków** - Project
+- emotion classification – anger, disgust, fear, happiness, sadness, surprise, neutral
+- edge detection
+- recognizing emotions from the shape of the mouth, eyes and eyebrows
+
+## Repository actions
+
+- **Points to consider** - Issues
+- **established** - README
+- **assigning tasks** - Project
