@@ -1,23 +1,23 @@
 # Summer Emotion
 
-## Spotkania
+## Meetings
 
-- **wtorek (4.08.26)** - ustalenie typu sieci (Issues), termin spotkań cyklicznych - odbyło się w środę (5.08.26)
-- **wtorek (11.08.26)** - szukanie modelu open source (wstępna nauka architektury CNN)
+- **Tuesday (4.08.26)** - determination of network type (Issues) and scheduling of recurring meetings – took place on Wednesday (05.08.26)
+- **Tuesday (11.08.26)** - searching for an open-source model (introductory study of CNN architecture) -> not found, FER2013 dataset could be useful
 
-## Parametry danych
+## Data parameters
 
-- **obrazek 48x48** - zgodnie z datasetem
-- **kolor czarno-biały** - w trakcie trwania projektu zmiana na kolorowe
+- **48x48 image** – in accordance with the dataset
+- **black and white** – change to color during the project
 
-## Działanie sieci
+## Network operation
 
-- klasyfikacja emocji - anger, disgust, fear, happy, sad, surprise, neutral
-- wykrywanie krawędzi
-- rozpoznanie emocji po kształcie ust, oczu i brwii
+- emotion classification – anger, disgust, fear, happiness, sadness, surprise, neutral
+- edge detection
+- recognizing emotions from the shape of the mouth, eyes and eyebrows
 
-## Działania w repo
+## Repository actions
 
-- **do przemyślenia** - Issues
-- **ustalone** - README
-- **przypisywanie tasków** - Project
+- **Points to consider** - Issues
+- **established** - README
+- **assigning tasks** - Project
