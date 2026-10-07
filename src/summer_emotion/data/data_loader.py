@@ -9,8 +9,31 @@ def get_data_loader(
         val_ratio: float=0.2,
         seed: int=42
     ) -> tuple[DataLoader, DataLoader, DataLoader, list[str]]:
-    """
-    Loading dataset, splitting it for train/val/test sets, transforms it and return DataLoader
+    """Create train, validation and test DataLoaders from an image folder.
+
+    Expects the following directory layout where each subfolder name is a class label:
+
+        data_dir/
+            train/<class_name>/*.png, *.jpg
+            test/<class_name>/*.png, *.jpg
+
+        For example "data/train/happy/img01.png" has the label "happy".
+
+    The "train" folde is randomly split into training and validation subsets using a fixed seed. 
+        All images are converted to grayscale, resized to 48x48 and normalized.
+
+    Args:
+        data_dir: Root directory containing "train" and "test" folders.
+        batch_size: number of images per batch.
+        val_split: Fraction of the training data used for validation must be between 0 and 1 (exclusive).
+
+    Returns:
+        tuple: "(train_loader, val_loader, test_loader, class_names)" where
+        class_names is a list of class labels ordered by their index.
+
+    Raises:
+        FileNotFoundError: If "train" or "test" directory does not exist.
+        ValueError: If "val_ratio" is outside (0, 1).
     """
     # Transform 
     transform = transforms.Compose([
