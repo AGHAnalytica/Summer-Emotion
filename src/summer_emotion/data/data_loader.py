@@ -7,7 +7,8 @@ def get_data_loader(
         data_dir: Path|str="data", 
         batch_size: int=64, 
         val_ratio: float=0.2,
-        seed: int=42) -> tuple[DataLoader, DataLoader, DataLoader, list[str]]:
+        seed: int=42
+    ) -> tuple[DataLoader, DataLoader, DataLoader, list[str]]:
     """
     Loading dataset, splitting it for train/val/test sets, transforms it and return DataLoader
     """
@@ -33,6 +34,10 @@ def get_data_loader(
     for path in (train_path, test_path):
         if not path.is_dir():
             raise FileNotFoundError(f"Directory not found: {path.resolve()}")
+
+    # val_ratio check
+    if not 0.0 < val_ratio < 1.0:
+        raise ValueError(f"val_ratio must be between 0 and 1, got {val_ratio}")
 
     # Loading datasets 
     train_val_dataset = datasets.ImageFolder(train_path, transform=transform)
