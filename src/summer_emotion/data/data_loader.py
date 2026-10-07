@@ -1,12 +1,13 @@
 import torch
 from torchvision import transforms, datasets
 from torch.utils.data import DataLoader, random_split
+from pathlib import Path
 
 def get_data_loader(
-        data_dir="data", 
-        batch_size=64, 
-        val_split=0.2,
-        seed=42) -> tuple:
+        data_dir: Path|str="data", 
+        batch_size: int=64, 
+        val_ratio: float=0.2,
+        seed: int=42) -> tuple[DataLoader, DataLoader, DataLoader, list[str]]:
     """
     Loading dataset, splitting it for train/val/test sets, transforms it and return DataLoader
     """
@@ -18,15 +19,27 @@ def get_data_loader(
     ])
 
     # Paths
-    train_path = f"{data_dir}/train"
-    test_path = f"{data_dir}/test"
+    if isinstance(data_dir, str):
+        data_dir = Path(data_dir)
+
+    data_dir = data_dir.expanduser()
+
+    if not data_dir.is_dir():
+        raise FileNotFoundError(f"Directory not found: {data_dir.resolve()}")
+    
+    train_path = data_dir / "train"
+    test_path = data_dir / "test"
+
+    for path in (train_path, test_path):
+        if not path.is_dir():
+            raise FileNotFoundError(f"Directory not found: {path.resolve()}")
 
     # Loading datasets 
     train_val_dataset = datasets.ImageFolder(train_path, transform=transform)
     test_dataset = datasets.ImageFolder(test_path, transform=transform)
 
     # Splitting dataset into training and validation set
-    train_size = int((1.0 - val_split) * len(train_val_dataset))
+    train_size = int((1.0 - val_ratio) * len(train_val_dataset))
     val_size = len(train_val_dataset) - train_size
 
     # Seed blocking -> with every new execution of the script, network will be splitted the same as before
