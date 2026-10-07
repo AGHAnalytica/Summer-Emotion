@@ -2,7 +2,11 @@ import torch
 from torchvision import transforms, datasets
 from torch.utils.data import DataLoader, random_split
 
-def get_data_loader(data_dir="data", batch_size=64, val_split=0.2) -> tuple:
+def get_data_loader(
+        data_dir="data", 
+        batch_size=64, 
+        val_split=0.2,
+        seed=42) -> tuple:
     """
     Loading dataset, splitting it for train/val/test sets, transforms it and return DataLoader
     """
@@ -26,7 +30,7 @@ def get_data_loader(data_dir="data", batch_size=64, val_split=0.2) -> tuple:
     val_size = len(train_val_dataset) - train_size
 
     # Seed blocking -> with every new execution of the script, network will be splitted the same as before
-    generator = torch.Generator().manual_seed(42)
+    generator = torch.Generator().manual_seed(seed)
 
     train_dataset, val_dataset = random_split(train_val_dataset, [train_size, val_size], generator=generator)
 
